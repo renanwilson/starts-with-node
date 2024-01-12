@@ -1,0 +1,22 @@
+POST http://localhost:3333/challenges
+Content-Type: application/json
+
+{
+    "title" : "video 0112",
+    "description": "Descrição do video 0112",
+    "tasks_lists": ["isso", "aquilo"]
+}
+###
+GET http://localhost:3333/challenges
+###
+
+PUT http://localhost:3333/challenges/dba6a1c6-68dc-468e-afef-d4ad1dd1e4d1
+Content-Type: application/json
+
+{
+    "title" : "video 121",
+    "description": "Descrição do put",
+    "tasks_lists": ["isso", "aqui"]
+}
+###
+DELETE  http://localhost:3333/challenges/dba6a1c6-68dc-468e-afef-d4ad1dd1e4d1
