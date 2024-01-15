@@ -16,7 +16,7 @@ export class DatabasePostgres {
   }
 
   async create(challenge) {
-    const challengeId = 1;
+    const challengeId = randomUUID();
     const { title, description, tasks_lists } = challenge;
     const response = { ...challenge, id: challengeId };
 
