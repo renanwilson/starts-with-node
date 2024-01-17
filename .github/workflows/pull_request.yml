@@ -12,3 +12,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+
+      - name: Copy pull request template
+        uses:  cp .github/pull_request_template.md pull_request_template.md
