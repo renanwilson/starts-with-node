@@ -1,0 +1,17 @@
+name: CI/CD
+
+on:
+  pull_request:
+    paths:
+      - "**/*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Copy PR Template
+        run: cp .github/pull_request_template.md pull_request_template.md
