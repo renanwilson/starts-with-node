@@ -1,10 +1,9 @@
-POST http://localhost:3333/challenges
+POST http://localhost:3333/createUser
 Content-Type: application/json
 
 {
-    "title" : "video 0112",
-    "description": "Descrição do video 0112",
-    "tasks_lists": ["isso", "aquilo"]
+	"email": "renan.alves.ra16@gmail.com",
+	"password": "renan125alves"
 }
 ###
 GET http://localhost:3333/challenges
