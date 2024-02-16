@@ -1,27 +1,34 @@
 import express from "express";
-import admin from "firebase-admin";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 
 const loginRoute = express.Router();
 
-loginRoute.post("/createUser", async (req, res) => {
+loginRoute.post("/signup", async (req, res) => {
   try {
     const { email, password, displayName } = req.body;
-
-    const userRecord = await admin.auth().createUser({
+    const auth = getAuth();
+    const userRecord = await createUserWithEmailAndPassword(
+      auth,
       email,
-      password,
-      displayName,
-    });
+      password
+    );
+    const user = auth.currentUser;
+    await updateProfile(user, { displayName });
 
     res.status(201).json({ uid: userRecord.uid });
   } catch (error) {
+    console.log(error);
     res.status(500).send("Erro ao criar usuário.");
   }
 });
 
-// Endpoint para autenticar um usuário
-loginRoute.post("/authenticateUser", async (req, res) => {
+loginRoute.post("/auth", async (req, res) => {
   try {
     const { email, password } = req.body;
     const auth = getAuth();
